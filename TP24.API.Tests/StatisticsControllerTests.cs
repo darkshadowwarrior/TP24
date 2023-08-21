@@ -23,4 +23,11 @@ public class StatisticsControllerTests : ControllerBase
         _controller.GetStatisticsForOpenAndClosedInvoices();
         _mockStatisticsService.Verify(o => o.GetStatisticsForOpenAndClosedInvoices(), Times.Once);
     }
+    
+    [Test]
+    public void GetTotalOpenDebtLeftToPay()
+    {
+        _controller.GetTotalOpenDebtLeftToPay();
+        _mockStatisticsService.Verify(o => o.GetTotalOpenDebtLeftToPay(), Times.Once);
+    }
 }

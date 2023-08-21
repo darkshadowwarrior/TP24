@@ -8,6 +8,7 @@ namespace TP24.Data.Tests;
 public class StatisticsServiceTests
 {
     private Mock<IStatisticsRepository> _mockStatisticsRepository;
+    private Mock<IPayloadRepository> _mockPayloadRepository;
     
     private StatisticsService _service;
     
@@ -15,7 +16,8 @@ public class StatisticsServiceTests
     public void Setup()
     {
         _mockStatisticsRepository = new Mock<IStatisticsRepository>();
-        _service = new StatisticsService(_mockStatisticsRepository.Object);
+        _mockPayloadRepository = new Mock<IPayloadRepository>();
+        _service = new StatisticsService(_mockStatisticsRepository.Object, _mockPayloadRepository.Object);
     }
 
     [Test]
@@ -29,4 +31,13 @@ public class StatisticsServiceTests
         _mockStatisticsRepository.Verify(o => o.GetOpenAndClosedInvoiceCounts(), Times.Once);
     }
     
+    [Test]
+    public void GetTotalOpenDebtLeftToPay()
+    {
+        _mockPayloadRepository.Setup(o => o.GetTotalOpenDebtLeftToPay()).Returns(400);
+        
+        _service.GetTotalOpenDebtLeftToPay();
+
+        _mockPayloadRepository.Verify(o => o.GetTotalOpenDebtLeftToPay(), Times.Once);
+    }
 }

@@ -8,4 +8,5 @@ public interface IPayloadRepository
     IEnumerable<Payload> GetPayloads();
     Payload UpdatePayload(Payload isAny);
     Payload GetPayloadById(int payloadId);
+    double GetTotalOpenDebtLeftToPay();
 }

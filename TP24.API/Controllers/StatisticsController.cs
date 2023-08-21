@@ -15,9 +15,15 @@ public class StatisticsController : ControllerBase
         _statisticsService = statisticsService;
     }
 
-    [HttpGet]
+    [HttpGet("GetStatisticsForOpenAndClosedInvoices")]
     public StatisticsResponse GetStatisticsForOpenAndClosedInvoices()
     {
         return _statisticsService.GetStatisticsForOpenAndClosedInvoices();
+    }
+
+    [HttpGet("GetTotalOpenDebtLeftToPay")]
+    public double GetTotalOpenDebtLeftToPay()
+    {
+        return _statisticsService.GetTotalOpenDebtLeftToPay();
     }
 }

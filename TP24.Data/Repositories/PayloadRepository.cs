@@ -52,6 +52,12 @@ public class PayloadRepository : IPayloadRepository
         return MapResponseToPayload(entity);
     }
 
+    public double GetTotalOpenDebtLeftToPay()
+    {
+        var sum = _context.Payloads.Sum(o => o.OpeningValue - o.PaidValue);
+        return sum;
+    }
+
     private static Payload MapResponseToPayload(Payload response)
     {
         return new Payload()
