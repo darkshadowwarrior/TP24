@@ -15,7 +15,7 @@ public class PayloadController : ControllerBase
         _service = service;
     }
     
-    [HttpGet]
+    [HttpPut]
     public PayloadResponse Add(PayloadRequest payload)
     {
         return _service.AddPayload(payload);
