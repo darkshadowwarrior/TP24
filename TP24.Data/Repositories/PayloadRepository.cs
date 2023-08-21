@@ -8,4 +8,9 @@ public class PayloadRepository : IRepository
     {
         throw new NotImplementedException();
     }
+
+    public IEnumerable<Payload> GetPayloads()
+    {
+        throw new NotImplementedException();
+    }
 }

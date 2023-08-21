@@ -5,4 +5,5 @@ namespace TP24.Data.Repositories;
 public interface IRepository
 {
     Payload AddPayload(Payload payload);
+    IEnumerable<Payload> GetPayloads();
 }

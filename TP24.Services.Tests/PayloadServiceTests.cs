@@ -1,6 +1,7 @@
 using Moq;
 using TP24.Data.Entities;
 using TP24.Data.Repositories;
+using TP24.Services.Interfaces;
 using TP24.Services.Models;
 using TP24.Services.Services;
 
@@ -28,5 +29,12 @@ public class Tests
         _mapper.Setup(o => o.MapToResponse(It.IsAny<Payload>())).Returns(new PayloadResponse() { Id = 1 });
         _service.AddPayload(new PayloadRequest());
         _mockRepository.Verify(x => x.AddPayload(It.IsAny<Payload>()));
+    }
+    
+    [Test]
+    public void GetPayloads()
+    {
+        _service.GetPayloads();
+        _mockRepository.Verify(x => x.GetPayloads());
     }
 }
