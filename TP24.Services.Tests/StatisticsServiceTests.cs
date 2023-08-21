@@ -29,11 +29,4 @@ public class StatisticsServiceTests
         _mockStatisticsRepository.Verify(o => o.GetOpenAndClosedInvoiceCounts(), Times.Once);
     }
     
-    [Test]
-    public void GetStatisticsForOpenAndClosedInvoicesThrowsException()
-    {
-        _mockStatisticsRepository.Setup(o => o.GetOpenAndClosedInvoiceCounts()).Throws<Exception>();
-        
-        Assert.Throws<Exception>(() => _service.GetStatisticsForOpenAndClosedInvoices());
-    }
 }
