@@ -9,7 +9,7 @@ public class Payload
     public double OpeningValue { get; set; }
     public double PaidValue { get; set; }
     public DateTime DueDate { get; set; }
-    public string ClosedDAte { get; set; }
+    public string ClosedDate { get; set; }
     public bool Cancelled { get; set; }
     public string DebtorName { get; set; }
     public string DebtorReference { get; set; }
