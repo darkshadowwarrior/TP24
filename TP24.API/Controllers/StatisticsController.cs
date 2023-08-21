@@ -4,7 +4,9 @@ using TP24.Services.Models;
 
 namespace TP24.API.Controllers;
 
-public class StatisticsController
+[ApiController]
+[Route("[controller]")]
+public class StatisticsController : ControllerBase
 {
     private readonly IStatisticsService _statisticsService;
     private readonly IPayloadService _payloadService;

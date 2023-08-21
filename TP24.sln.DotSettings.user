@@ -7,5 +7,6 @@
     &lt;TestId&gt;NUnit3x::DE1D23BB-AD99-4901-B21E-A36169B2E748::net7.0::TP24.Data.Tests.Tests.GetPayloads&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::DE1D23BB-AD99-4901-B21E-A36169B2E748::net7.0::TP24.Data.Tests.StatisticsServiceTests.GetStatisticsForOpenAndClosedInvoices&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::DE1D23BB-AD99-4901-B21E-A36169B2E748::net7.0::TP24.Data.Tests.StatisticsServiceTests.GetStatisticsForOpenAndClosedInvoices_ReturnsResponseWithTwoClosedAndOneOpenInvoices&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::84489C96-E924-48A8-A1A7-8C9F91C1C251::net7.0::TP24.API.Tests.StatisticsControllerTests.GetStatisticsForOpenAndClosedInvoices&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
