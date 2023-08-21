@@ -1,4 +1,4 @@
-using TP24.Data.Entities;
+using TP24.Data.Interfaces;
 using TP24.Services.Interfaces;
 using TP24.Services.Models;
 
@@ -6,10 +6,20 @@ namespace TP24.Services.Services;
 
 public class StatisticsService : IStatisticsService
 {
-    public StatisticsResponse GetStatisticsForOpenAndClosedInvoices(List<Payload> payloads)
+    private readonly IStatisticsRepository _repository;
+
+    public StatisticsService(IStatisticsRepository repository)
     {
-        var totalClosedInvoices = payloads.Count(o => o.PaidValue.Equals(o.OpeningValue));
-        var totalOpenInvoices = payloads.Count(o => !o.PaidValue.Equals(o.OpeningValue));
-        return new StatisticsResponse() { TotalClosedInvoices = totalClosedInvoices, TotalOpenInvoices = totalOpenInvoices};
+        _repository = repository;
+    }
+    public StatisticsResponse GetStatisticsForOpenAndClosedInvoices()
+    {
+        var stats = _repository.GetOpenAndClosedInvoiceCounts();
+        
+        return new StatisticsResponse()
+        {
+            TotalClosedInvoices = stats.TotalClosedInvoices,
+            TotalOpenInvoices = stats.TotalOpenInvoices
+        };
     }
 }

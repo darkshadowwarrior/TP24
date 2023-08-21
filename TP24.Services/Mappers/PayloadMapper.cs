@@ -18,7 +18,32 @@ public class PayloadMapper : IPayloadMapper
             OpeningValue = payload.OpeningValue,
             PaidValue = payload.PaidValue,
             DueDate = payload.DueDate,
-            ClosedDAte = payload.ClosedDAte,
+            ClosedDate = payload.ClosedDAte,
+            Cancelled = payload.Cancelled,
+            DebtorName = payload.DebtorName,
+            DebtorReference = payload.DebtorReference,
+            DebtorAddress1 = payload.DebtorAddress1,
+            DebtorAddress2 = payload.DebtorAddress2,
+            DebtorTown = payload.DebtorTown,
+            DebtorState = payload.DebtorState,
+            DebtorZip = payload.DebtorZip,
+            DebtorCountryCode = payload.DebtorCountryCode,
+            DebtorRegistrationNumber = payload.DebtorRegistrationNumber
+        };
+    }
+    
+    public Payload MapToPayload(Payload payload)
+    {
+        return new Payload()
+        {
+            Id = payload.Id,
+            Reference = payload.Reference,
+            CurrencyCode = payload.CurrencyCode,
+            IssueDate = payload.IssueDate,
+            OpeningValue = payload.OpeningValue,
+            PaidValue = payload.PaidValue,
+            DueDate = payload.DueDate,
+            ClosedDate = payload.ClosedDate,
             Cancelled = payload.Cancelled,
             DebtorName = payload.DebtorName,
             DebtorReference = payload.DebtorReference,
@@ -43,7 +68,7 @@ public class PayloadMapper : IPayloadMapper
             OpeningValue = payload.OpeningValue,
             PaidValue = payload.PaidValue,
             DueDate = payload.DueDate,
-            ClosedDAte = payload.ClosedDAte,
+            ClosedDAte = payload.ClosedDate,
             Cancelled = payload.Cancelled,
             DebtorName = payload.DebtorName,
             DebtorReference = payload.DebtorReference,

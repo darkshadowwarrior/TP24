@@ -9,18 +9,15 @@ namespace TP24.API.Controllers;
 public class StatisticsController : ControllerBase
 {
     private readonly IStatisticsService _statisticsService;
-    private readonly IPayloadService _payloadService;
 
-    public StatisticsController(IStatisticsService statisticsService, IPayloadService payloadService)
+    public StatisticsController(IStatisticsService statisticsService)
     {
         _statisticsService = statisticsService;
-        _payloadService = payloadService;
     }
 
     [HttpGet]
     public StatisticsResponse GetStatisticsForOpenAndClosedInvoices()
     {
-        var payloads = _payloadService.GetPayloads();
-        return _statisticsService.GetStatisticsForOpenAndClosedInvoices(payloads.ToList());
+        return _statisticsService.GetStatisticsForOpenAndClosedInvoices();
     }
 }

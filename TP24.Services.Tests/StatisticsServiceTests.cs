@@ -1,69 +1,39 @@
-using FluentAssertions;
+using Moq;
 using TP24.Data.Entities;
-using TP24.Services.Models;
+using TP24.Data.Interfaces;
 using TP24.Services.Services;
 
 namespace TP24.Data.Tests;
 
 public class StatisticsServiceTests
 {
+    private Mock<IStatisticsRepository> _mockStatisticsRepository;
+    
     private StatisticsService _service;
     
     [SetUp]
     public void Setup()
     {
-        _service = new StatisticsService();
+        _mockStatisticsRepository = new Mock<IStatisticsRepository>();
+        _service = new StatisticsService(_mockStatisticsRepository.Object);
     }
 
     [Test]
-    public void GetStatisticsForOpenAndClosedInvoices_ReturnsResponseWithOneClosedAndZeroOpenInvoices()
+    public void GetStatisticsForOpenAndClosedInvoices()
     {
-        var expected = new StatisticsResponse()
-        {
-            TotalClosedInvoices = 1,
-            TotalOpenInvoices = 0
-        };
+        _mockStatisticsRepository.Setup(o => o.GetOpenAndClosedInvoiceCounts()).Returns(new PayloadStatistics()
+            { TotalClosedInvoices = 1, TotalOpenInvoices = 0 });
         
-        var actual = _service.GetStatisticsForOpenAndClosedInvoices(new List<Payload>()
-        {
-            new Payload()
-            {
-                OpeningValue = 123.00,
-                PaidValue = 123.00
-            }
-        });
+        _service.GetStatisticsForOpenAndClosedInvoices();
 
-        actual.Should().BeEquivalentTo(expected);
+        _mockStatisticsRepository.Verify(o => o.GetOpenAndClosedInvoiceCounts(), Times.Once);
     }
     
     [Test]
-    public void GetStatisticsForOpenAndClosedInvoices_ReturnsResponseWithTwoClosedAndOneOpenInvoices()
+    public void GetStatisticsForOpenAndClosedInvoicesThrowsException()
     {
-        var expected = new StatisticsResponse()
-        {
-            TotalClosedInvoices = 2,
-            TotalOpenInvoices = 1
-        };
+        _mockStatisticsRepository.Setup(o => o.GetOpenAndClosedInvoiceCounts()).Throws<Exception>();
         
-        var actual = _service.GetStatisticsForOpenAndClosedInvoices(new List<Payload>()
-        {
-            new Payload()
-            {
-                OpeningValue = 123.00,
-                PaidValue = 123.00
-            },
-            new Payload()
-            {
-                OpeningValue = 342.00,
-                PaidValue = 123.00
-            },
-            new Payload()
-            {
-                OpeningValue = 342.00,
-                PaidValue = 342.00
-            }
-        });
-
-        actual.Should().BeEquivalentTo(expected);
+        Assert.Throws<Exception>(() => _service.GetStatisticsForOpenAndClosedInvoices());
     }
 }
