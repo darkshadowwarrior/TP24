@@ -34,8 +34,6 @@ public class StatisticsServiceTests
     [Test]
     public void GetTotalOpenDebtLeftToPay()
     {
-        _mockPayloadRepository.Setup(o => o.GetTotalOpenDebtLeftToPay()).Returns(400);
-        
         _service.GetTotalOpenDebtLeftToPay();
 
         _mockPayloadRepository.Verify(o => o.GetTotalOpenDebtLeftToPay(), Times.Once);

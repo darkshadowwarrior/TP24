@@ -11,5 +11,6 @@
     &lt;TestId&gt;NUnit3x::DE1D23BB-AD99-4901-B21E-A36169B2E748::net7.0::TP24.Data.Tests.StatisticsServiceTests.GetStatisticsForOpenAndClosedInvoices_ReturnsResponseWithOneClosedAndZeroOpenInvoices&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::DE1D23BB-AD99-4901-B21E-A36169B2E748::net7.0::TP24.Data.Tests.StatisticsServiceTests.GetStatisticsForOpenAndClosedInvoicesThrowsException&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::DE1D23BB-AD99-4901-B21E-A36169B2E748::net7.0::TP24.Data.Tests.Tests.UpdatePayload&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::DE1D23BB-AD99-4901-B21E-A36169B2E748::net7.0::TP24.Data.Tests.StatisticsServiceTests.GetTotalOpenDebtLeftToPay&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
