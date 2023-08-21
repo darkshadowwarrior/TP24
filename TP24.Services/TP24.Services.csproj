@@ -10,4 +10,7 @@
       <ProjectReference Include="..\TP24.Data\TP24.Data.csproj" />
     </ItemGroup>
 
+
+
+
 </Project>

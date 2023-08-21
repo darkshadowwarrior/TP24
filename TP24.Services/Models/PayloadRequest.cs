@@ -1,6 +1,8 @@
-namespace TP24.Data.Entities;
+using System.Security.Cryptography.X509Certificates;
 
-public class Payload
+namespace TP24.Services.Models;
+
+public class PayloadRequest
 {
     public int Id { get; set; }
     public string Reference { get; set; }

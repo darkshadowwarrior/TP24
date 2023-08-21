@@ -4,5 +4,5 @@ namespace TP24.Data.Repositories;
 
 public interface IRepository
 {
-    void AddPayload(Payload payload);
+    Payload AddPayload(Payload payload);
 }

@@ -1,6 +1,6 @@
-namespace TP24.Data.Entities;
+namespace TP24.Services.Models;
 
-public class Payload
+public class PayloadResponse
 {
     public int Id { get; set; }
     public string Reference { get; set; }
