@@ -6,6 +6,6 @@ namespace TP24.Services.Interfaces;
 public interface IPayloadService
 {
     PayloadResponse AddPayload(PayloadRequest payload);
-    IEnumerable<Payload> GetPayloads();
+    IEnumerable<PayloadResponse> GetPayloads();
     PayloadResponse UpdatePayload(PayloadRequest payload);
 }

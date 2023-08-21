@@ -26,4 +26,10 @@ public class PayloadController : ControllerBase
     {
         return _service.UpdatePayload(payload);
     }
+    
+    [HttpGet]
+    public List<PayloadResponse> GetAll()
+    {
+        return _service.GetPayloads().ToList();
+    }
 }

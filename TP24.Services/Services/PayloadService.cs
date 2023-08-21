@@ -26,9 +26,9 @@ public class PayloadService : IPayloadService
         return _mapper.MapToResponse(response);
     }
 
-    public IEnumerable<Payload> GetPayloads()
+    public IEnumerable<PayloadResponse> GetPayloads()
     {
-        return _payloadRepository.GetPayloads();
+        return _payloadRepository.GetPayloads().Select(o => _mapper.MapToResponse(o));
     }
 
     public PayloadResponse UpdatePayload(PayloadRequest payload)
