@@ -1,6 +1,5 @@
 using TP24.Data.Entities;
 using TP24.Data.Interfaces;
-using TP24.Data.Repositories;
 using TP24.Services.Interfaces;
 using TP24.Services.Models;
 
@@ -30,5 +29,13 @@ public class PayloadService : IPayloadService
     public IEnumerable<Payload> GetPayloads()
     {
         return _payloadRepository.GetPayloads();
+    }
+
+    public PayloadResponse UpdatePayload(PayloadRequest payload)
+    {
+        var response = _payloadRepository.UpdatePayload(_mapper.MapToEntity(payload));
+        _statisticsRepository.UpdateTotalOpenInvoicesCount();
+        
+        return _mapper.MapToResponse(response);
     }
 }

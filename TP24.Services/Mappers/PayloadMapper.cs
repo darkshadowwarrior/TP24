@@ -18,7 +18,7 @@ public class PayloadMapper : IPayloadMapper
             OpeningValue = payload.OpeningValue,
             PaidValue = payload.PaidValue,
             DueDate = payload.DueDate,
-            ClosedDate = payload.ClosedDAte,
+            ClosedDate = payload.ClosedDate,
             Cancelled = payload.Cancelled,
             DebtorName = payload.DebtorName,
             DebtorReference = payload.DebtorReference,

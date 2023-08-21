@@ -7,4 +7,5 @@ public interface IPayloadService
 {
     PayloadResponse AddPayload(PayloadRequest payload);
     IEnumerable<Payload> GetPayloads();
+    PayloadResponse UpdatePayload(PayloadRequest payload);
 }

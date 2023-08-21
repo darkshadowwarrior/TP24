@@ -24,6 +24,36 @@ public class PayloadRepository : IPayloadRepository
         var response = _context.Payloads.Add(payload).Entity;
         _context.SaveChanges();
         
+        return MapResponseToPayload(response);
+    }
+    
+    public IEnumerable<Payload> GetPayloads()
+    {
+        return _context.Payloads;
+    }
+
+    public Payload UpdatePayload(Payload payload)
+    {
+        
+        var response = _context.Payloads.Update(payload).Entity;
+        _context.SaveChanges();
+        
+        return MapResponseToPayload(response);
+    }
+
+    public Payload GetPayloadById(int payloadId)
+    {
+        var entity = _context.Payloads.Find(payloadId);
+        if (entity == null)
+        {
+            throw new Exception();
+        };
+
+        return MapResponseToPayload(entity);
+    }
+
+    private static Payload MapResponseToPayload(Payload response)
+    {
         return new Payload()
         {
             Id = response.Id,
@@ -47,8 +77,4 @@ public class PayloadRepository : IPayloadRepository
         };
     }
 
-    public IEnumerable<Payload> GetPayloads()
-    {
-        return _context.Payloads;
-    }
 }

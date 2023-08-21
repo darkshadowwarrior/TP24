@@ -29,15 +29,16 @@ public class StatisticsRepository : IStatisticsRepository
 
     public PayloadStatistics GetOpenAndClosedInvoiceCounts()
     {
+        var payload = new PayloadStatistics();
         var stats = _context.Statistics.FirstOrDefault();
+        
+        if (stats == null) return payload;
 
-        if (stats == null) throw new Exception();
+        payload.TotalOpenInvoices = stats.TotalOpenInvoices;
+        payload.TotalClosedInvoices = stats.TotalClosedInvoices;
 
-        return new PayloadStatistics()
-        {
-            TotalOpenInvoices = stats.TotalOpenInvoices,
-            TotalClosedInvoices = stats.TotalClosedInvoices
-        };
+        return payload;
+
     }
 
     public void UpdateTotalClosedInvoicesCount()

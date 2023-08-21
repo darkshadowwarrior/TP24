@@ -6,4 +6,6 @@ public interface IPayloadRepository
 {
     Payload AddPayload(Payload payload);
     IEnumerable<Payload> GetPayloads();
+    Payload UpdatePayload(Payload isAny);
+    Payload GetPayloadById(int payloadId);
 }
