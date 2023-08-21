@@ -40,6 +40,7 @@ public class Tests
         _mapper.Setup(o => o.MapToEntity(It.IsAny<PayloadRequest>())).Returns(new Payload());
         _mapper.Setup(o => o.MapToResponse(It.IsAny<Payload>())).Returns(new PayloadResponse() { Id = 1 });
         _mockRepository.Setup(o => o.GetPayloadById(It.IsAny<int>())).Returns(new Payload() { Id = 1, PaidValue = 200 });
+        _mockRepository.Setup(o => o.UpdatePayload(It.IsAny<Payload>())).Returns(new Payload() { Id = 1, PaidValue = 200 });
         _service.UpdatePayload(new PayloadRequest() { PaidValue = 34.00 });
         _mockRepository.Verify(o => o.UpdatePayload(It.IsAny<Payload>()));
         _mockStatisticsRepository.Verify(o => o.UpdateTotalOpenInvoicesCount(), Times.Once);

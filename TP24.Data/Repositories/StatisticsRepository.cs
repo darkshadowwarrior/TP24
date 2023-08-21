@@ -45,10 +45,14 @@ public class StatisticsRepository : IStatisticsRepository
     {
         var stats = _context.Statistics.FirstOrDefault();
 
-        if (stats == null) throw new Exception();
+        if (stats == null)
+        {
+            stats = new PayloadStatistics();
+        }
         
         stats.TotalOpenInvoices -= 1;
         stats.TotalClosedInvoices += 1;
         _context.Statistics.Update(stats);
+        _context.SaveChanges();
     }
 }

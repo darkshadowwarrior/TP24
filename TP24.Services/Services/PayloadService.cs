@@ -21,6 +21,7 @@ public class PayloadService : IPayloadService
     public PayloadResponse AddPayload(PayloadRequest payload)
     {
         var response = _payloadRepository.AddPayload(_mapper.MapToEntity(payload));
+        
         _statisticsRepository.UpdateTotalOpenInvoicesCount();
         
         return _mapper.MapToResponse(response);
@@ -34,7 +35,14 @@ public class PayloadService : IPayloadService
     public PayloadResponse UpdatePayload(PayloadRequest payload)
     {
         var response = _payloadRepository.UpdatePayload(_mapper.MapToEntity(payload));
-        _statisticsRepository.UpdateTotalOpenInvoicesCount();
+        if (response.PaidValue % response.OpeningValue == 0)
+        {
+            _statisticsRepository.UpdateTotalClosedInvoicesCount();
+        }
+        else
+        {
+            _statisticsRepository.UpdateTotalOpenInvoicesCount();
+        }
         
         return _mapper.MapToResponse(response);
     }

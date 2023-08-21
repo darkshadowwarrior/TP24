@@ -6,4 +6,5 @@ public interface IStatisticsRepository
 {
     void UpdateTotalOpenInvoicesCount();
     PayloadStatistics GetOpenAndClosedInvoiceCounts();
+    void UpdateTotalClosedInvoicesCount();
 }
