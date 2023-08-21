@@ -1,9 +1,10 @@
 using TP24.Data.Entities;
+using TP24.Services.Interfaces;
 using TP24.Services.Models;
 
 namespace TP24.Services.Services;
 
-public class StatisticsService
+public class StatisticsService : IStatisticsService
 {
     public StatisticsResponse GetStatisticsForOpenAndClosedInvoices(List<Payload> payloads)
     {
